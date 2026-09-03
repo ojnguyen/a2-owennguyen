@@ -13,6 +13,17 @@ const appdata = [
   { 'model': 'ford', 'year': 1987, 'mpg': 14} 
 ]
 
+/* Explaination of server:
+  - This function(request, response) does not run now. Node stores it and calls it once per incoming HTTP request (GET, POST, etc.).
+  - On a request, Node creates BOTH a request object and a response object.
+  - Request object
+    - Method (GET, POST, etc.), URL (path and query string), and header info
+  - Response object
+    - Initially empty (but already wired to client's open socket)
+    - Status code, header info, and body content
+    - "Returning" something is just writing into the response object
+  - Again, both objects wrap the same 2-way TCP connection that was opened by the client (browser) when it made the request.
+*/
 const server = http.createServer( function( request,response ) {
   if( request.method === 'GET' ) {
     handleGet( request, response )    
@@ -31,13 +42,17 @@ const handleGet = function( request, response ) {
   }
 }
 
+// NOTE: Data sent to the server via POST is stringified JSON, so we need to parse it into an object before we can use it
 const handlePost = function( request, response ) {
   let dataString = ''
 
+  // NOTE: The request object is a readable stream of data
+  // Each time a "chunk" of data is available ('data' event), the callback will be called with that chunk
   request.on( 'data', function( data ) {
       dataString += data 
   })
 
+  // When the request is finished being sent ('end' event), the callback will be called
   request.on( 'end', function() {
     console.log( JSON.parse( dataString ) )
     // ... do something with the data here!!!
@@ -52,6 +67,7 @@ const handlePost = function( request, response ) {
 const sendFile = function( response, filename ) {
    const type = mime.getType( filename ) 
 
+   // The function passed to readFile will read the file and then call the function with either an error or the file content
    fs.readFile( filename, function( err, content ) {
 
      // if the error = null, then we've loaded the file successfully
