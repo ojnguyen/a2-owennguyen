@@ -13,7 +13,10 @@ const submit = async function( event ) {
 
   const response = await fetch( '/submit', {
     method:'POST',
-    body 
+    body: body,
+    headers: {
+      'Content-Type': 'application/json'  
+    }
   })
 
   const text = await response.text()
