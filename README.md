@@ -10,10 +10,9 @@ CSS Positioning Technique:
 Instructions:
 1. Fill in exercise, weight (lbs), and reps. Then click **Add Lift**.
 2. Click **Delete** on any row to remove that lift.
-Include a very brief summary of your project here. Be sure to include the CSS positioning technique you used, and any required instructions to use your application.
 
 ## Technical Achievements
-- **Single-page app with live data sync**: I created a single-page app that provides a form for users to submit data (Add lift form). It always shows the current state of the server (List of lifts). I do this through the endpoints `POST /addLift`, `POST /deleteLift`, and `GET /lifts`. When the user adds a lift, `POST /addLift` is called via `fetch` to add the lift to the list (through the form submitted by the user; includes exercise, weight, reps). When the user deletes a lift, `POST /deleteLift` is called via `fetch` to delete the specific lift (via its `ID`) from the list. In both of these cases, the server returns the full updated list of lifts for the client to render. On a page load, `GET /lifts` is called via `fetch` to load the current state of the list of lifts to the page.
+- **Single-Page App With Live Data Sync**: I created a single-page app that provides a form for users to submit data (Add lift form). It always shows the current state of the server (List of lifts). I do this through the endpoints `POST /addLift`, `POST /deleteLift`, and `GET /lifts`. When the user adds a lift, `POST /addLift` is called via `fetch` to add the lift to the list (through the form submitted by the user; includes exercise, weight, reps). When the user deletes a lift, `POST /deleteLift` is called via `fetch` to delete the specific lift (via its `ID`) from the list. In both of these cases, the server returns the full updated list of lifts for the client to render. On a page load, `GET /lifts` is called via `fetch` to load the current state of the list of lifts to the page. Using these endpoints, the current state of the server is always shown.
 
 ### Design/Evaluation Achievements
 - **Student Tests**:
@@ -27,5 +26,7 @@ Include a very brief summary of your project here. Be sure to include the CSS po
         - He had a problem with all the empty space on the wide-screen version of my site. Also, he would have preferred if the color for the delete button was red.
         - When talking through using the website using think-aloud-protocol, he found it very intuitive and easy to use my website.
         - I would size up the wide-screen version of my site (table size, font size, etc.). I might also add an "edit field" card to fill up even more space. However, I would not change the delete button from yellow to red -- yellow was in my color palette, and it is still a warning color.
+- **Mobile-First Design**: *(Learned from reading)* Initially built app for narrow viewports, and then wrote a media query for screens wider than 500px. Screens less than 500px had `flex-direction: col;`, while screens 500px and up had `flex-direction: row;`.
+- **CSS `nth-child` Math**: *(Learned from reading)* Used `nth-child` CSS math `#lifts-table tr:nth-child(even)` to generate a different color row background for even rows.  
 - **Color Palette**: I used this color palette from Adobe's color palette generator:
 ![My color palette](colorPalette.png)

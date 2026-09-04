@@ -1,3 +1,5 @@
+/* CSS "Variables" */
+
 :root {
   --card-bg: #1a1d24;
   --bg: #262a34;
@@ -10,6 +12,8 @@
   --delete: #edb964;
   --font: 'Lato', system-ui, sans-serif;
 }
+
+/* Element Selectors */
 
 body {
   background: var(--bg);
@@ -52,6 +56,8 @@ input::placeholder {
   color: var(--text-muted);
 }
 
+/* ID Selectors */
+
 #lift-form {
   display: flex;
   flex-direction: column;
@@ -62,6 +68,8 @@ input::placeholder {
 #lifts-table tr:nth-child(even) { /* Learned this from the reading */
   background: var(--blue-transparent);
 }
+
+/* Class Selectors */
 
 .tracker-wrapper {
   display: flex;
