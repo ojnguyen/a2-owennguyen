@@ -8,12 +8,8 @@ const http = require('http'),
   port = 3000;
 
 // NOTE: Weight will be in pounds, reps will be an integer, and ORM will be a float rounded to 2 decimal places.
-let lifts = [
-  { ID: 1, exercise: 'bench press', weight: 185, reps: 6, orm: 0.00 },
-  { ID: 2, exercise: 'squat', weight: 285, reps: 8, orm: 0.00 },
-  { ID: 3, exercise: 'deadlift', weight: 315, reps: 6, orm: 0.00 }
-];
-let nextID = 4; // TODO: Assign this to 1 once this array is empty.
+let lifts = [];
+let nextID = 1;
 
 // ORM = One Rep Max
 // Epley formula: ORM = weight * (1 + reps / 30)
